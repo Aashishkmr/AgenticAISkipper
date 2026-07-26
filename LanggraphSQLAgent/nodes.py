@@ -5,13 +5,19 @@ from langchain_core.runnables import RunnableConfig
 from langgraph.graph import END, START, MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode
 from tools import tools
+from tool_wrappers import run_query_tool_with_interrupt
 from init_chat_model import model
 
 get_schema_tool = next(tool for tool in tools if tool.name == "sql_db_schema")
 get_schema_node = ToolNode([get_schema_tool], name="get_schema")
 
 run_query_tool = next(tool for tool in tools if tool.name == "sql_db_query")
-run_query_node = ToolNode([run_query_tool], name="run_query")
+
+# plan vanilla node for run_query_tool
+#run_query_node = ToolNode([run_query_tool], name="run_query")
+
+# if you want interrupt for human in the loop
+run_query_node = ToolNode([run_query_tool_with_interrupt], name="run_query")
 
 
 # Example: create a predetermined tool call
