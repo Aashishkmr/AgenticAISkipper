@@ -1,0 +1,3 @@
+import pathlib
+from graph import agent 
+pathlib.Path("graph.png").write_bytes(agent.get_graph().draw_mermaid_png())
