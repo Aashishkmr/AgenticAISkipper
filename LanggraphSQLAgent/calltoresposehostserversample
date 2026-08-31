@@ -1,0 +1,10 @@
+$body = @{
+  input = "Which genre on average has the longest tracks?"
+  stream = $false
+} | ConvertTo-Json
+
+Invoke-RestMethod `
+    -Uri http://localhost:8088/responses `
+    -Method Post `
+    -Body $body `
+    -ContentType "application/json"

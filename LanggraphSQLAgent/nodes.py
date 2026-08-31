@@ -14,10 +14,10 @@ get_schema_node = ToolNode([get_schema_tool], name="get_schema")
 run_query_tool = next(tool for tool in tools if tool.name == "sql_db_query")
 
 # plan vanilla node for run_query_tool
-#run_query_node = ToolNode([run_query_tool], name="run_query")
+run_query_node = ToolNode([run_query_tool], name="run_query")
 
 # if you want interrupt for human in the loop
-run_query_node = ToolNode([run_query_tool_with_interrupt], name="run_query")
+#run_query_node = ToolNode([run_query_tool_with_interrupt], name="run_query")
 
 
 # Example: create a predetermined tool call

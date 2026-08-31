@@ -1,4 +1,6 @@
 langgraph
 langchain
-pathlib
 requests
+python-dotenv
+azure-identity
+langchain-azure-ai[hosting]>=1.2.4
